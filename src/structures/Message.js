@@ -392,22 +392,12 @@ class Message extends Base {
         if (!chatId) {
             chatId = this._getChatId();
         }
-    
-        // Eğer chatId '@lid' ile bitiyorsa, fallback olarak "to" alanını kullan
-        if (chatId.endsWith("@lid") && this.to) {
-            chatId = this.to;
-        }
-    
-        // Bazı sürümlerde WidFactory olmadığı için normalize et
-        if (chatId.includes(":")) {
-            chatId = chatId.split(":")[0] + "@c.us";
-        }
-    
+
         options = {
             ...options,
-            quotedMessageId: this.id?._serialized
+            quotedMessageId: this.id._serialized
         };
-    
+
         return this.client.sendMessage(chatId, content, options);
     }
 
