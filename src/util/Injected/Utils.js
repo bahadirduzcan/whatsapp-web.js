@@ -249,7 +249,8 @@ exports.LoadUtils = () => {
 
         if (typeof chat.id?.isGroup === 'function' && chat.id.isGroup()) {
             from = chat.groupMetadata && chat.groupMetadata.isLidAddressingMode ? lidUser : meUser;
-            participant = window.Store.WidFactory.toUserWidOrThrow(from);
+            //participant = window.Store.WidFactory.toUserWidOrThrow(from);
+            participant = from;
         }
 
         const newMsgKey = new window.Store.MsgKey({
